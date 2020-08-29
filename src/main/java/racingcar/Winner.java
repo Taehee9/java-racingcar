@@ -17,13 +17,10 @@ public class Winner {
 
         List<String> winnerList = cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .map(car -> car.getName())
+                .map(Car::getName)
                 .collect(Collectors.toList());
 
-        String winner = winnerList.stream()
-                .collect(Collectors.joining(", "));
-
-        return winner;
+        return String.join(", ", winnerList);
     }
 
 }
