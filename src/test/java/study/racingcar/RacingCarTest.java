@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import racingcar.RacingCar;
 import racingcar.RandomMove;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingCarTest {
@@ -24,15 +25,14 @@ public class RacingCarTest {
     @Test
     @DisplayName("레이싱 차 준비 됐는지")
     void isRacingCar() {
-        assertEquals(NAME_ONE, racingCar.carReady(NAME).getCar().get(0).getName());
+        assertThat(racingCar.carReady(NAME).getCar().get(0).getName()).isEqualTo(NAME_ONE);
     }
 
     @Test
     @DisplayName("차 움직임 테스트")
     void canCarPlay() {
         racingCar.racingPlay();
-
-        assertEquals(1, racingCar.getCarList().get(0).getPosition());
+        assertThat(racingCar.getCarList().get(0).getPosition()).isEqualTo(1);
     }
 
 }

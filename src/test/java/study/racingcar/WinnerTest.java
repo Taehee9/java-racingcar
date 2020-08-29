@@ -10,18 +10,19 @@ import racingcar.Winner;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class WinnerTest {
     private static final int STANDARD_MOVEMENT = 0;
     private static final int BOUND = 1;
     private static final RandomMove RANDOM_MOVE = new RandomMove(STANDARD_MOVEMENT, BOUND);
-    private Car car;
     private String NAME = "pobi,crong";
     private Winner winner = new Winner();
     private RacingCar racingCar;
 
     @BeforeEach
     void setup() {
-        car = new Car(NAME);
         racingCar = new RacingCar(NAME, RANDOM_MOVE);
     }
 
@@ -30,6 +31,6 @@ public class WinnerTest {
     void findWinner() {
         List<Car> cars = racingCar.getCarList();
         cars.get(0).move();
-        winner.findWinner(cars);
+        assertThat(winner.findWinner(cars)).isEqualTo("pobi");
     }
 }

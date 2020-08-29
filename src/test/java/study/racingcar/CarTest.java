@@ -33,7 +33,14 @@ public class CarTest {
     @DisplayName("차 이동 했는지")
     void isCarMove() {
         car.move();
-        assertEquals(1, car.getPosition());
+        assertThat(car.getPosition()).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("차 정지")
+    void isCarStop() {
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
 
 }
